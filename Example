@@ -1,0 +1,20 @@
+DECLARE
+    
+    NOME_ARQUIVO       VARCHAR2(180) := 'test.csv';
+    CAMINHO_DIRETORIO  VARCHAR2(180) := 'DIR_TMP'; 
+    R1                 SYS_REFCURSOR; 
+
+
+BEGIN
+    
+    OPEN R1 FOR 
+       SELECT TO_CHAR(SYSDATE, 'DD/MM/YYYY') TODAY
+          FROM DUAL
+           ;
+          
+     CREATE_FILE_CSV(CAMINHO_DIRETORIO, NOME_ARQUIVO, R1);
+    
+END;
+/
+show errors;
+/
